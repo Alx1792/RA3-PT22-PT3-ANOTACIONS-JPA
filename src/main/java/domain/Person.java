@@ -48,6 +48,12 @@ public abstract class Person {
         this.phoneNumber = phoneNumber;
     }
 
+    public void addVehicle(Vehicle v){
+    };
+    public void removeVehicle(Vehicle v){
+
+    }
+
     @Override
     public String toString() {
         return "Person{" +
