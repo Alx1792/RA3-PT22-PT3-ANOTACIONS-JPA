@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "Tipus")
 @Table(name="Vehicle")
 public abstract class Vehicle {
     @Id
@@ -19,16 +20,16 @@ public abstract class Vehicle {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
-    private Person person_id;
+    private Person propietari;
     public Vehicle() {
     }
 
-    public Person getPerson_id() {
-        return person_id;
+    public Person getPropietari() {
+        return propietari;
     }
 
-    public void setPerson_id(Person person_id) {
-        this.person_id = person_id;
+    public void setPropietari(Person propietari) {
+        this.propietari = propietari;
     }
 
     public Vehicle(Integer id, String brand, Integer year, float price) {

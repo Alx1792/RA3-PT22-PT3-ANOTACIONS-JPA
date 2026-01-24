@@ -1,8 +1,19 @@
 package domain;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("car")
 public class Car extends Vehicle{
+    @Column(name = "doors")
     private Integer doors;
+    @Column(name = "seats")
     private Integer seats;
+
+    public Car() {
+    }
 
     public Car(Integer doors, Integer seats) {
         this.doors = doors;

@@ -1,7 +1,17 @@
 package domain;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("motorcycle")
 public class Motorcycle extends Vehicle{
+    @Column(name = "hasSidecar")
     private boolean hasSidecar;
+
+    public Motorcycle() {
+    }
 
     public Motorcycle(boolean hasSidecar) {
         this.hasSidecar = hasSidecar;

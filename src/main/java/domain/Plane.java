@@ -1,9 +1,19 @@
 package domain;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("plane")
 public class Plane extends Vehicle{
+    @Column(name="tallNumber")
     private Integer tallNumber;
+    @Column(name="autopilot")
     private boolean autopilot;
 
+    public Plane() {
+    }
     public Plane(Integer tallNumber, boolean autopilot) {
         this.tallNumber = tallNumber;
         this.autopilot = autopilot;
