@@ -1,9 +1,23 @@
 package domain;
 
+import org.checkerframework.checker.units.qual.C;
+
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "person_type")
+@Table(name="Person")
 public abstract class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
+    @Column(name = "phoneNumber")
     private Integer phoneNumber;
 
     public Person() {
@@ -53,6 +67,7 @@ public abstract class Person {
     public void removeVehicle(Vehicle v){
 
     }
+
 
     @Override
     public String toString() {

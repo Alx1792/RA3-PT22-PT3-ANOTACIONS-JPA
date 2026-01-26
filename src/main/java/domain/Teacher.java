@@ -1,5 +1,10 @@
 package domain;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("teacherCode")
 public class Teacher extends Person {
     private String teacherCode;
 
