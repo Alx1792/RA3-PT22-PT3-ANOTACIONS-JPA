@@ -5,7 +5,7 @@ import org.checkerframework.checker.units.qual.C;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "person_type")
 @Table(name="Person")
 public abstract class Person {
@@ -63,6 +63,7 @@ public abstract class Person {
     }
 
     public void addVehicle(Vehicle v){
+
     };
     public void removeVehicle(Vehicle v){
 

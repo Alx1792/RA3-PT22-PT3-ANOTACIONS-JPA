@@ -1,7 +1,17 @@
 package domain;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("STUDENT")
 public class Student extends Person{
+    @Column(name="studentCode")
     private String studentCode;
+
+    public Student() {
+    }
 
     public Student(String studentCode) {
         this.studentCode = studentCode;

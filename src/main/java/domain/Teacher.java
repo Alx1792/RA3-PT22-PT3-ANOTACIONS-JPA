@@ -1,12 +1,17 @@
 package domain;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("teacherCode")
+@DiscriminatorValue("teacher")
 public class Teacher extends Person {
+    @Column(name="teacherCode")
     private String teacherCode;
+
+    public Teacher() {
+    }
 
     public Teacher(String teacherCode) {
         this.teacherCode = teacherCode;
