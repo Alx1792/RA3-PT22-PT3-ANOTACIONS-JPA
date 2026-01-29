@@ -15,7 +15,7 @@ public abstract class Vehicle {
     @Column(name="year")
     private Integer year;
     @Column(name="price")
-    private float price;
+    private Float price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
@@ -31,7 +31,7 @@ public abstract class Vehicle {
         this.propietari = propietari;
     }
 
-    public Vehicle(Integer id, String brand, Integer year, float price) {
+    public Vehicle(Integer id, String brand, Integer year, Float price) {
         this.id = id;
         this.brand = brand;
         this.year = year;
@@ -62,11 +62,11 @@ public abstract class Vehicle {
         this.year = year;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

@@ -3,6 +3,8 @@ package domain;
 import org.checkerframework.checker.units.qual.C;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -19,6 +21,8 @@ public abstract class Person {
     private String surname;
     @Column(name = "phoneNumber")
     private Integer phoneNumber;
+    @OneToMany(mappedBy = "propietari",cascade = CascadeType.ALL)
+    private List<Vehicle> vehicles = new ArrayList<>(); //Guardar els vehicles a la persona
 
     public Person() {
     }
@@ -62,13 +66,24 @@ public abstract class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    public void addVehicle(Vehicle v){
 
+    public void addVehicle(Vehicle v){
+        vehicles.add(v);//Afegeix
+        v.setPropietari(this);//estableix propietari
     };
     public void removeVehicle(Vehicle v){
+        vehicles.remove(v);//treu
+        v.setPropietari(null);//estableix que no hi ha propietari
 
     }
 
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
 
     @Override
     public String toString() {

@@ -7,30 +7,30 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("plane")
 public class Plane extends Vehicle{
-    @Column(name="tallNumber")
-    private Integer tallNumber;
+    @Column(name="tailNumber")
+    private Integer tailNumber;
     @Column(name="autopilot")
     private boolean autopilot;
 
     public Plane() {
     }
-    public Plane(Integer tallNumber, boolean autopilot) {
-        this.tallNumber = tallNumber;
+    public Plane(Integer tailNumber, boolean autopilot) {
+        this.tailNumber = tailNumber;
         this.autopilot = autopilot;
     }
 
-    public Plane(Integer id, String brand, Integer year, float price, Integer tallNumber, boolean autopilot) {
+    public Plane(Integer id, String brand, Integer year, Float price, Integer tailNumber, boolean autopilot) {
         super(id, brand, year, price);
-        this.tallNumber = tallNumber;
+        this.tailNumber = tailNumber;
         this.autopilot = autopilot;
     }
 
-    public Integer getTallNumber() {
-        return tallNumber;
+    public Integer getTailNumber() {
+        return tailNumber;
     }
 
-    public void setTallNumber(Integer tallNumber) {
-        this.tallNumber = tallNumber;
+    public void setTailNumber(Integer tailNumber) {
+        this.tailNumber = tailNumber;
     }
 
     public boolean isAutopilot() {
@@ -44,7 +44,7 @@ public class Plane extends Vehicle{
     @Override
     public String toString() {
         return "Plane{" +
-                "tallNumber=" + tallNumber +
+                "tailNumber=" + tailNumber +
                 ", autopilot=" + autopilot +
                 '}';
     }

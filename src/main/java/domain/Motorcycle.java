@@ -17,7 +17,7 @@ public class Motorcycle extends Vehicle{
         this.hasSidecar = hasSidecar;
     }
 
-    public Motorcycle(Integer id, String brand, Integer year, float price, boolean hasSidecar) {
+    public Motorcycle(Integer id, String brand, Integer year, Float price, boolean hasSidecar) {
         super(id, brand, year, price);
         this.hasSidecar = hasSidecar;
     }

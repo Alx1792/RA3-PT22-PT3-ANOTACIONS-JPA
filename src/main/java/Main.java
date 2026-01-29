@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import domain.HibernateSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

@@ -20,7 +20,7 @@ public class Car extends Vehicle{
         this.seats = seats;
     }
 
-    public Car(Integer id, String brand, Integer year, float price, Integer doors, Integer seats) {
+    public Car(Integer id, String brand, Integer year, Float price, Integer doors, Integer seats) {
         super(id, brand, year, price);
         this.doors = doors;
         this.seats = seats;
