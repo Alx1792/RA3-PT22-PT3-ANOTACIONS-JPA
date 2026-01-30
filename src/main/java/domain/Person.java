@@ -73,7 +73,7 @@ public abstract class Person {
     };
     public void removeVehicle(Vehicle v){
         vehicles.remove(v);//treu
-        v.setPropietari(null);//estableix que no hi ha propietari
+//        v.setPropietari(null);//estableix que no hi ha propietari
 
     }
 

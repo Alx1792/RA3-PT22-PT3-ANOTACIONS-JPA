@@ -10,9 +10,12 @@ import domain.Plane;
 import domain.Teacher;
 import domain.Student;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 
 public class Main {
+    private static Session session = HibernateSession.getSessionFactory().openSession();
+
 
 	private static List<Person> people = new ArrayList<>();
 	private static List<Vehicle> vehicles = new ArrayList<>();
@@ -56,8 +59,7 @@ public class Main {
 	}
 	
 	private static void fase1() {
-        Session session=HibernateSession.getSessionFactory().openSession();
-        session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         try {
             //Persona
             Student anna= new Student("STUOO1");
@@ -65,6 +67,7 @@ public class Main {
             anna.setPhoneNumber(111111111);
             anna.setSurname("Lopez");
             session.persist(anna);
+
 
             Student jordi=new Student("STUOO2");
             jordi.setName("Jordi");
@@ -90,7 +93,7 @@ public class Main {
             maria.setSurname("Gomez");
             session.persist(maria);
 
-            Teacher pere=new Teacher("TEA002");
+            Teacher pere=new Teacher("TEA003");
             pere.setName("Pere");
             pere.setPhoneNumber(666666666);
             pere.setSurname("Ruiz");
@@ -106,6 +109,8 @@ public class Main {
             toyota.setDoors(5);
             toyota.setSeats(5);
             session.persist(toyota);
+
+
 
             Car ford= new Car();
             ford.setBrand("Ford");
@@ -155,6 +160,8 @@ public class Main {
 
 
         }catch (Exception e) {
+            System.out.println("Error");
+            e.printStackTrace();
 
         };
 
@@ -162,9 +169,47 @@ public class Main {
 	
 	private static void fase2() {
 
+        if (session.getTransaction().isActive()) {
+            session.getTransaction().commit();
+        }
+        Transaction tx = session.beginTransaction();
+        try{
+            Person person=session.get(Person.class,1);
+            Vehicle vehicle=session.get(Vehicle.class,1);
+            if (person != null && vehicle != null) {
+                person.removeVehicle(vehicle);
+                vehicle.setPropietari(null);
+            }
+        tx.commit();
+
+
+        }catch (Exception e){
+            System.out.println("Error");
+            e.printStackTrace();
+
+        }
+
 	}
 
 	private static void fase3() {
+        if (session.getTransaction().isActive()) {
+            session.getTransaction().commit();
+        }
+        Transaction tx = session.beginTransaction();
+        try{
+            Vehicle vehicle=session.get(Vehicle.class,1);
+            vehicle.setBrand("Seat");
+            vehicle.setPrice(19999f);
+            vehicle.setYear(2022);
+            tx.commit();
+
+        }catch (Exception e){
+            if(tx !=null){
+                tx.rollback();
+            }
+            System.out.println("Error ");
+
+        }
 
 	}
 }
