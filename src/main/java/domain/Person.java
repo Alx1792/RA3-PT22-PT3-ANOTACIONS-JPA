@@ -17,21 +17,21 @@ public abstract class Person {
     private Integer id;
     @Column(name = "name")
     private String name;
-    @Column(name = "surname")
-    private String surname;
     @Column(name = "phoneNumber")
     private Integer phoneNumber;
+    @Column(name = "surname")
+    private String surname;
     @OneToMany(mappedBy = "propietari",cascade = CascadeType.ALL)
     private List<Vehicle> vehicles = new ArrayList<>(); //Guardar els vehicles a la persona
 
     public Person() {
     }
 
-    public Person(Integer id, String name, String surname, Integer phoneNumber) {
+    public Person(Integer id, String name,Integer phoneNumber,String surname) {
         this.id = id;
         this.name = name;
-        this.surname = surname;
         this.phoneNumber = phoneNumber;
+        this.surname = surname;
     }
 
     public Integer getId() {

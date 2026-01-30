@@ -17,8 +17,8 @@ public class Teacher extends Person {
         this.teacherCode = teacherCode;
     }
 
-    public Teacher(Integer id, String name, String surname, Integer phoneNumber, String teacherCode) {
-        super(id, name, surname, phoneNumber);
+    public Teacher(Integer id, String name,  Integer phoneNumber,String surname, String teacherCode) {
+        super(id, name, phoneNumber,surname );
         this.teacherCode = teacherCode;
     }
 
