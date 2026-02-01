@@ -66,38 +66,44 @@ public class Main {
             anna.setName("Anna");
             anna.setPhoneNumber(111111111);
             anna.setSurname("Lopez");
-            session.persist(anna);
+            session.save(anna);
+
 
 
             Student jordi=new Student("STUOO2");
             jordi.setName("Jordi");
             jordi.setPhoneNumber(222222222);
             jordi.setSurname("Martinez");
-            session.persist(jordi);
+            session.save(jordi);
+
 
             Student clara=new Student("STUOO3");
             clara.setName("Clara");
             clara.setPhoneNumber(333333333);
             clara.setSurname("Sanchez");
-            session.persist(clara);
+            session.save(clara);
+
 
             Teacher joan=new Teacher("TEA001");
             joan.setName("Joan");
             joan.setPhoneNumber(444444444);
             joan.setSurname("Perez");
-            session.persist(joan);
+            session.save(joan);
+
 
             Teacher maria=new Teacher("TEA002");
             maria.setName("Maria");
             maria.setPhoneNumber(555555555);
             maria.setSurname("Gomez");
-            session.persist(maria);
+            session.save(maria);
+
 
             Teacher pere=new Teacher("TEA003");
             pere.setName("Pere");
             pere.setPhoneNumber(666666666);
             pere.setSurname("Ruiz");
-            session.persist(pere);
+            session.save(pere);
+
 
             //Vehicle
             //Coche
@@ -105,10 +111,11 @@ public class Main {
             toyota.setBrand("Toyota");
             toyota.setPrice(18000f);
             toyota.setYear(2020);
-            toyota.setPropietari(anna);
+            anna.addVehicle(toyota);
             toyota.setDoors(5);
             toyota.setSeats(5);
-            session.persist(toyota);
+            session.persist(anna);
+
 
 
 
@@ -116,29 +123,31 @@ public class Main {
             ford.setBrand("Ford");
             ford.setPrice(15000f);
             ford.setYear(2019);
-            ford.setPropietari(maria);
+            maria.addVehicle(ford);
             ford.setDoors(3);
             ford.setSeats(4);
-            session.persist(ford);
+            session.persist(maria);
+
 
             //Avion
             Plane cessna=new Plane();
             cessna.setBrand("Cessna");
             cessna.setPrice(120000f);
             cessna.setYear(2015);
-            cessna.setPropietari(joan);
             cessna.setAutopilot(true);
             cessna.setTailNumber(11111);
-            session.persist(cessna);
+            joan.addVehicle(cessna);
+            session.persist(joan);
+
 
             Plane boeing= new Plane();
             boeing.setBrand("Boeing");
             boeing.setPrice(900000f);
             boeing.setYear(2010);
-            boeing.setPropietari(clara);
             boeing.setAutopilot(false);
             boeing.setTailNumber(22222);
-            session.persist(boeing);
+            clara.addVehicle(boeing);
+            session.persist(clara);
 
 
             //Moto
@@ -146,18 +155,18 @@ public class Main {
             yamaha.setBrand("Yamaha");
             yamaha.setPrice(9000f);
             yamaha.setYear(2021);
-            yamaha.setPropietari(jordi);
-            yamaha.setHasSidecar(false);
-            session.persist(yamaha);
+            jordi.addVehicle(yamaha);
+            session.persist(jordi);
+
+
 
             Motorcycle harley=new Motorcycle();
             harley.setBrand("Harley-Davidson");
             harley.setPrice(20000f);
             harley.setYear(2018);
-            harley.setPropietari(pere);
             harley.setHasSidecar(true);
-            session.persist(harley);
-
+            pere.addVehicle(harley);
+            session.persist(pere);
 
         }catch (Exception e) {
             System.out.println("Error");
@@ -178,7 +187,7 @@ public class Main {
             Vehicle vehicle=session.get(Vehicle.class,1);
             if (person != null && vehicle != null) {
                 person.removeVehicle(vehicle);
-                vehicle.setPropietari(null);
+
             }
         tx.commit();
 
