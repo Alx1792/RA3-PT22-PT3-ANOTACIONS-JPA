@@ -14,6 +14,7 @@ import org.hibernate.Transaction;
 
 
 public class Main {
+    // Obrim una sessió d'Hibernate per treballar amb la BD
     private static Session session = HibernateSession.getSessionFactory().openSession();
 
 
@@ -59,14 +60,16 @@ public class Main {
 	}
 	
 	private static void fase1() {
-        Transaction tx = session.beginTransaction();
+
+        Transaction tx = session.beginTransaction();//
         try {
             //Persona
             Student anna= new Student("STUOO1");
             anna.setName("Anna");
             anna.setPhoneNumber(111111111);
             anna.setSurname("Lopez");
-            session.save(anna);
+            session.save(anna);// INSERT d'Anna a la taula Person
+
 
 
 
@@ -111,10 +114,11 @@ public class Main {
             toyota.setBrand("Toyota");
             toyota.setPrice(18000f);
             toyota.setYear(2020);
+            // Afegeix el vehicle a la llista d'Anna i marca Anna com a propietària
             anna.addVehicle(toyota);
             toyota.setDoors(5);
             toyota.setSeats(5);
-            session.persist(anna);
+            session.persist(anna);// Guarda anna i, per cascade, el toyota
 
 
 
@@ -167,6 +171,7 @@ public class Main {
             harley.setHasSidecar(true);
             pere.addVehicle(harley);
             session.persist(pere);
+            tx.commit();
 
         }catch (Exception e) {
             System.out.println("Error");
@@ -180,16 +185,16 @@ public class Main {
 
         if (session.getTransaction().isActive()) {
             session.getTransaction().commit();
-        }
-        Transaction tx = session.beginTransaction();
+        }//Comprova si habia una transaccio oberta davant i fa que si hi ha una forçi un commit del anterior
+        Transaction tx = session.beginTransaction(); // Nova transacció per fer els canvis d’aquesta fase
         try{
-            Person person=session.get(Person.class,1);
-            Vehicle vehicle=session.get(Vehicle.class,1);
+            Person person=session.get(Person.class,1);// Carrega de la BD la persona amb id = 1
+            Vehicle vehicle=session.get(Vehicle.class,1);// Carrega de la BD el vehicle amb id = 1
             if (person != null && vehicle != null) {
-                person.removeVehicle(vehicle);
+                person.removeVehicle(vehicle); // Treu el vehicle de la llista de vehicles de la person i posa el propietari del vehicle a null
 
             }
-        tx.commit();
+        tx.commit();// Confirma la transacció: Hibernate fa l’UPDATE del vehicle a la BD
 
 
         }catch (Exception e){

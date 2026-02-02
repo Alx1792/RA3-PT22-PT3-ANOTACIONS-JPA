@@ -5,7 +5,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("STUDENT")
+@DiscriminatorValue("STUDENT")//Diferencia la persona
 public class Student extends Person{
     @Column(name="studentCode")
     private String studentCode;

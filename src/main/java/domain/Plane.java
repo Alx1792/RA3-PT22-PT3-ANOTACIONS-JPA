@@ -4,8 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity
-@DiscriminatorValue("plane")
+@Entity//taula
+@DiscriminatorValue("plane")//Aixo sobre
 public class Plane extends Vehicle{
     @Column(name="tailNumber")
     private Integer tailNumber;

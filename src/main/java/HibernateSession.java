@@ -4,6 +4,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
 public class HibernateSession {
+    /*
+     * Hibernate és un framework ORM per a Java.
+     * La seva funció principal és mapar classes i objectes Java
+     * (com Person, Vehicle, Student...) a taules i files de la base de dades,
+     * perquè puguem treballar amb objectes en lloc d'escriure SQL a mà.
+     */
 
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 	

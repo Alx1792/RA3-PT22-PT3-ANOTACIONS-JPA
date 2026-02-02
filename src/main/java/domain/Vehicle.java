@@ -17,8 +17,8 @@ public abstract class Vehicle {
     @Column(name="price")
     private Float price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id")
+    @ManyToOne(fetch = FetchType.LAZY) //LAZY: no carrega la persona propietària fins que es crida getPropietari() (carrega només quan es necessita)
+    @JoinColumn(name = "person_id") //Posa el id de la persona i el remarque com a person_id, al person es marque que aquest camp rebra el id
     private Person propietari;
     public Vehicle() {
     }
